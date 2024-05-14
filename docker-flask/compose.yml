@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - ./api:/usr/local/src/api
+    ports:
+      - "8000:8000"
+    tty: true
+    entrypoint: >
+      sh -c "
+        cd /usr/local/src/api &&
+        uwsgi --ini uwsgi.ini
+      "
